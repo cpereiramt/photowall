@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Photowall from './Photowall';
-import Title from './Title'
+import Title from './Title';
+import AddPhoto from './AddPhoto';
 
 
 class Main extends Component{
@@ -21,9 +22,11 @@ class Main extends Component{
         id: "2",
         description: "On a vacation!",
         imageLink: "https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2017/08/24/104670887-VacationExplainsTHUMBWEB.1910x1000.jpg"
-        }]
+        }],
+        screen:'photos'//photos, AddPhoto
         }
         this.removePhoto = this.removePhoto.bind(this);
+        this.navigate = this.navigate.bind(this);
 console.log('constructor')
     }
 
@@ -38,7 +41,13 @@ console.log('constructor')
 
     }
 
+navigate(){
+this.setState({
 
+screen:'addPhoto'    
+})
+    
+}
     
 componentDidMount(){
 
@@ -48,17 +57,26 @@ console.log('componentDidMount')
 
 }
 componentDidUpdate(prevProps,prevState){
-alert('Re-Render')
+
 console.log(prevState.posts)
 console.log(this.state)
 }
 render(){
     console.log('render')
 return <div>
-    <Title title="Photowall"/>
-    {/* passing the parament posts to a class calling Photowall */}
-    <Photowall posts ={this.state.posts} removePhoto={this.removePhoto}/>
-    
+    {    this.state.screen ==='photos' && (
+              <div>
+                <Title title="Photowall"/>
+                  {/* passing the parament posts to a class calling Photowall */}
+                  <Photowall posts ={this.state.posts} removePhoto={this.removePhoto} navigate={this.navigate}/>
+              </div> 
+    )}
+      { this.state.screen ==='addPhoto' && (
+              <div>
+                <AddPhoto/>
+              </div>
+
+      )} 
 </div>
 
 }
@@ -78,3 +96,4 @@ export default Main
  url("https://cdn.rawgit.com/milktronics/beaglegr.am/master/public/fonts/billabong-webfont.ttf") format('truetype'), 
  url("https://cdn.rawgit.com/milktronics/beaglegr.am/master/public/fonts/billabong-webfont.svg#billabongregular") format('svg');  */
 
+ //url("https://image.flaticon.com/icons/svg/60/60740.svg") center no-repeat;
