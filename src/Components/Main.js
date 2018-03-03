@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Photowall from './Photowall';
 import Title from './Title';
 import AddPhoto from './AddPhoto';
-
+import {Route} from 'react-router-dom';
 
 class Main extends Component{
     constructor(){
@@ -23,10 +23,10 @@ class Main extends Component{
         description: "On a vacation!",
         imageLink: "https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2017/08/24/104670887-VacationExplainsTHUMBWEB.1910x1000.jpg"
         }],
-        screen:'photos'//photos, AddPhoto
+       
         }
         this.removePhoto = this.removePhoto.bind(this);
-        this.navigate = this.navigate.bind(this);
+       
 console.log('constructor')
     }
 
@@ -41,13 +41,7 @@ console.log('constructor')
 
     }
 
-navigate(){
-this.setState({
 
-screen:'addPhoto'    
-})
-    
-}
     
 componentDidMount(){
 
@@ -63,20 +57,25 @@ console.log(this.state)
 }
 render(){
     console.log('render')
-return <div>
-    {    this.state.screen ==='photos' && (
-              <div>
-                <Title title="Photowall"/>
-                  {/* passing the parament posts to a class calling Photowall */}
-                  <Photowall posts ={this.state.posts} removePhoto={this.removePhoto} navigate={this.navigate}/>
-              </div> 
-    )}
-      { this.state.screen ==='addPhoto' && (
-              <div>
-                <AddPhoto/>
-              </div>
+return <div>  
+              <Route exact path="/" render={() =>(
+                   <div>
+                         <Title title="Photowall"/>
+                          {/* passing the parament posts to a class calling Photowall */}
+                          <Photowall posts ={this.state.posts} removePhoto={this.removePhoto} navigate={this.navigate}/>
+                   </div> 
 
-      )} 
+              )}/>
+              
+    
+               <Route path="/AddPhoto" render={() =>(
+                    <div>
+                           <AddPhoto/>
+                    </div>
+
+               )}/>
+            
+      
 </div>
 
 }

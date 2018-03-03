@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom'
 
 function Photowall(props){
     return <div>  
-                 <Link  to="/addPhoto" className='addIcon'></Link>
+                 <Link  to="/AddPhoto" className='addIcon'></Link>
                  
                  <div className="photogrid">
                     {props.posts.map((post, index) => <Photo key={index} post = {post} removePhoto={props.removePhoto}/>)}
@@ -14,6 +14,8 @@ function Photowall(props){
                  </div>
            </div>
 }
+
+
 Photowall.propTypes ={
 posts:PropTypes.array.isRequired,
 removePhoto: PropTypes.func.isRequired
