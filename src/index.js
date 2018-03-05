@@ -5,6 +5,8 @@ import './Styles/Stylesheet.css'
 import {BrowserRouter} from 'react-router-dom'
 import {createStore} from 'redux'
 import rootReducer from './redux/reducer'
+import {Provider} from 'react-redux'
+import App from './Components/App'
 const store = createStore(rootReducer)
 //const tasks = ['Take out the trash','Shove the Driveway','walk the dog'];
 //sem jsx, somente javascript + react
@@ -25,5 +27,5 @@ tasks.map((task,index)=> React.createElement('li', {key:index}, task)));
 
 
 
-ReactDOM.render(<BrowserRouter><Main/></BrowserRouter>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><BrowserRouter><App/></BrowserRouter></Provider>, document.getElementById('root'));
 
