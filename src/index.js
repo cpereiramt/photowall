@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './Components/Main'
 import './Styles/Stylesheet.css'
 import {BrowserRouter} from 'react-router-dom'
 import {createStore} from 'redux'
 import rootReducer from './redux/reducer'
 import {Provider} from 'react-redux'
 import App from './Components/App'
+
 const store = createStore(rootReducer)
 //const tasks = ['Take out the trash','Shove the Driveway','walk the dog'];
 //sem jsx, somente javascript + react

@@ -7,16 +7,18 @@ function Photo(props){
                <figcaption><p>{post.description}</p></figcaption>
            <div className='button-container'>
            <button onClick= {() => {
-            props.removePhoto(post)}
+            props.removePost(1)}
             } >Remove</button>
            </div>
            </figure>
 
 }
 
+
+
 Photo.propTypes ={
 post: PropTypes.object.isRequired,
-removePhoto: PropTypes.func.isRequired
+
 
 }
 

@@ -3,6 +3,9 @@ import Photowall from './Photowall';
 import Title from './Title';
 import AddPhoto from './AddPhoto';
 import {Route} from 'react-router-dom';
+import { connect } from "react-redux";
+import {removePost} from '../redux/actions'
+
 
 class Main extends Component{
     constructor(){
@@ -19,15 +22,20 @@ componentDidUpdate(prevProps,prevState){
 
 
 }
+componentDidMount(){
+ this.props.removePost(1)
+
+}
 render(){
-  
+    console.log(this.props)
+    
 return <div>  
               <Route exact path="/" render={() =>(
                    <div>
                          <Title title="Photowall"/>
                           {/* passing the parament posts to a class calling Photowall */}
-{/*                           <Photowall posts ={this.state.posts} removePhoto={this.removePhoto} navigate={this.navigate}/>
- */}                   </div> 
+                          <Photowall {...this.props}/>
+                   </div> 
 
               )}/>
               
@@ -47,9 +55,14 @@ return <div>
 }
 }
 
+/* function mapStateToProps(state){
+    return{
+    posts:state
+    
+    }
+*/    
 
-
-export default Main
+export default Main 
 
 
 
