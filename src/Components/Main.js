@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Photowall from './Photowall';
 import Title from './Title';
 import AddPhoto from './AddPhoto';
-import {Route} from 'react-router-dom';
+import {Route,Link} from 'react-router-dom';
 import { connect } from "react-redux";
 import {removePost} from '../redux/actions'
 
@@ -27,9 +27,13 @@ render(){
     console.log(this.props)
     
 return <div>  
+
+                <h1>
+                     <Link to="/"> Photowall</Link>
+                </h1>
               <Route exact path="/" render={() =>(
                    <div>
-                         <Title title="Photowall"/>
+                         
                           {/* passing the parament posts to a class calling Photowall */}
                           <Photowall {...this.props}/>
                    </div> 
@@ -38,7 +42,7 @@ return <div>
               
       
                <Route path="/AddPhoto" render={({history}) =>(
-                      <AddPhoto {...this.props} onHistory={history}/>
+                      <AddPhoto {...this.props} />
                     
 
                )}/> 

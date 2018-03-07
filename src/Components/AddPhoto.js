@@ -18,7 +18,8 @@ imageLink : imageLink,
 description : description
 }
 if(description && imageLink){
-    this.props.onAddPhoto(post)
+    this.props.addPost(post)
+    this.props.history.push('/')
 
 }
 }  
@@ -26,7 +27,7 @@ if(description && imageLink){
 render(){
  return( 
  <div>
- <h1> Photowall </h1>
+
  <div className="form">
  <form onSubmit={this.handleSubmit}>
    <input type="text"placeholder="Link" name="link" /> 

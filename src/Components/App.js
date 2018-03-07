@@ -11,7 +11,7 @@ posts:state
 }
 }
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({actions}, dispatch)
+  return bindActionCreators(actions, dispatch)
 
 }
 const App = withRouter(connect(mapStateToProps,mapDispatchToProps)(Main))
