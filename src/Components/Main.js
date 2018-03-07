@@ -22,10 +22,7 @@ componentDidUpdate(prevProps,prevState){
 
 
 }
-componentDidMount(){
- this.props.removePost(1)
 
-}
 render(){
     console.log(this.props)
     
@@ -39,15 +36,12 @@ return <div>
 
               )}/>
               
-    {/* 
+      
                <Route path="/AddPhoto" render={({history}) =>(
-                      <AddPhoto onAddPhoto={(addedPost) =>{
-                     this.addPhoto(addedPost)
-                    history.push('/')
-                       } }/>
+                      <AddPhoto {...this.props} onHistory={history}/>
                     
 
-               )}/> */}
+               )}/> 
             
       
 </div>

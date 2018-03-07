@@ -16,7 +16,7 @@ function Photowall(props){
 
                          })
                         
-                        .map((post, index) => <Photo key={index} post = {post} {...props}/>)}
+                        .map((post, index) => <Photo key={index} post = {post} {...props} index={index}/>)}
     
                  </div>
            </div>
