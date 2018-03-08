@@ -5,6 +5,7 @@ import AddPhoto from './AddPhoto';
 import {Route,Link} from 'react-router-dom';
 import { connect } from "react-redux";
 import {removePost} from '../redux/actions'
+import Single from './Single'
 
 
 class Main extends Component{
@@ -46,7 +47,10 @@ return <div>
                     
 
                )}/> 
-            
+            <Route path="/single/:id" render={(params)=>(
+                 <Single {...this.props} {...params}/>
+
+            )}/>
       
 </div>
 
