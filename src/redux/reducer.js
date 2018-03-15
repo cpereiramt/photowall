@@ -3,16 +3,16 @@ import {combineReducers} from 'redux'
 
  function comments(state={},action){
      switch(action.type){
-   case "ADD_COMMENT":
-        
+   case "ADD_COMMENT":       
 
    if(!state[action.postId]){
    return {...state,[action.postId]: [action.comment]}
    }else{
-      return {...state, [action.postId]:[...state[action.postId] , action.comment]}
-  
+      return {...state, [action.postId]:[...state[action.postId] , action.comment]
+    }
+   
  }
-     
+   case 'LOAD_COMMENTS': return action.comments
    default:return state
 
      }
