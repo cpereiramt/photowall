@@ -18,7 +18,7 @@ imageLink : imageLink,
 description : description
 }
 if(description && imageLink){
-    this.props.addPost(post)
+    this.props.startAddingPost(post)
     this.props.history.push('/')
 
 }

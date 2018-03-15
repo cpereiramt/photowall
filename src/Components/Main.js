@@ -9,11 +9,10 @@ import Single from './Single'
 
 
 class Main extends Component{
-    constructor(){
-    super()
-    
-       
-console.log('constructor')
+
+    componentDidMount(){
+     this.props.startLoadingPost()
+
     }
 
 
