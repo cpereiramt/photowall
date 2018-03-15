@@ -2,12 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './Styles/Stylesheet.css'
 import {BrowserRouter} from 'react-router-dom'
-import {createStore} from 'redux'
+import {createStore, applyMiddleware} from 'redux'
 import rootReducer from './redux/reducer'
 import {Provider} from 'react-redux'
 import App from './Components/App'
+import thunk from 'redux-thunk'
+import {database} from './database/config'
 
-const store = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+const store = createStore(rootReducer,window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),applyMiddleware(thunk))
 //const tasks = ['Take out the trash','Shove the Driveway','walk the dog'];
 //sem jsx, somente javascript + react
 /* const element = React.createElement('ol', null, 
