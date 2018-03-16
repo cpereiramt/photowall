@@ -9,18 +9,28 @@ const id = Number(match.params.id)
 const post = posts.find((post) => post.id === id)
 const comments = this.props.comments[id] ||[]
 const index = this.props.posts.findIndex((post)=> post.id === id)
-console.log(post)
+if(this.props.loading === true){
 
-return <div className='single-photo'>
+    return <div className="loader"> ... loading </div>}
+    else if (post) {
+
+        return <div className='single-photo'>
         <Photo post={post} {...this.props} index={index}/>
         <Comments startAddingComment={this.props.startAddingComment} comments={comments} id ={id}/>
        
        </div>
+    }else {
+        return  <h2> Erro processing your request </h2>
+    }
 
-
+    }
 }
 
 
-}
+
+
+
+
+
 
 export default Single 

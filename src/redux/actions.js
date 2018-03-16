@@ -65,16 +65,26 @@ posts
 
 }
 
-export function startRemovingPost(index,id){
-return (dispatch) => {
-return database.ref(`posts/${id}`).remove().then(() => {    
-     dispatch(removePost(index))   
-
-})
-
-}
-
-}
+export function startRemovingPost(index, id) {
+ 
+  const updates = {
+   [`posts/${id}`]: null,
+   [`comments/${id}`]: null
+  }
+  /* this specifies the paths that we want to update to null 
+  (basically delete)
+  we're navigating to the post with id we clicked remove on, 
+  as well as the comments belonging to that post, with 
+  that same id. */ 
+   
+   return (dispatch) => {
+   return database.ref().update(updates).then(() => {
+   dispatch(removePost(index))
+   }).catch((error) => {
+   console.log(error)
+   })
+   }
+  }
 
 export function startAddingComment(comment, postId){
     return (dispatch) => {
